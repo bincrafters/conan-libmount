@@ -14,7 +14,7 @@ class LibmountConan(ConanFile):
     url = "https://github.com/bincrafters/conan-libmount"
     homepage = "https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git"
     author = "Bincrafters <bincrafters@gmail.com>"
-    license = " GPL-2.0-or-later"
+    license = "GPL-2.0-or-later"
     exports = ["LICENSE.md"]
     settings = "os", "arch", "compiler", "build_type"
     options = {"shared": [True, False], "fPIC": [True, False]}
@@ -31,8 +31,8 @@ class LibmountConan(ConanFile):
         version_tokens = self.version.split(".")
         major_minor = "%s.%s" % (version_tokens[0], version_tokens[1])
         source_url = "https://mirrors.edge.kernel.org/pub/linux/utils/util-linux/v%s/util-linux-%s.tar.gz" % (major_minor, self.version)
-        tools.get(source_url,
-                  sha256="e15bd3142b3a0c97fffecaed9adfdef8ab1d29211215d7ae614c177ef826e73a")
+        sha256 = "e15bd3142b3a0c97fffecaed9adfdef8ab1d29211215d7ae614c177ef826e73a"
+        tools.get(source_url, sha256=sha256)
         extracted_dir = "util-linux-" + self.version
         os.rename(extracted_dir, self._source_subfolder)
 
